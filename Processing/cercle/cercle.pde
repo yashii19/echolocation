@@ -1,8 +1,18 @@
+// Configuration
 
+float speed = 200;
+
+int nbPoints = 1000;
+
+int absorption = 40;
+
+int fps = 100;
+
+int rectX = 150, rectY = 120, rectWidth = 400, rectHeight = 180;
 
 class Point {
+  private int strength = 255;
   private PVector position;
-  private PVector lastPosition;
   private PVector velocity;
 
   public Point(int positionX, int positionY, float velocityX, float velocityY) {
@@ -11,36 +21,49 @@ class Point {
   }
 
   public void step(float seconds) {
-    if (position.x >= rectX && position.x <= rectX + rectWidth && position.y >= rectY && position.y <= rectY + rectHeight) {
-      if (lastPosition.x >= rectX && lastPosition.x <= rectX + rectWidth) {
-        velocity.y = -velocity.y;
-      }
-      if (lastPosition.y >= rectY && lastPosition.y <= rectY + rectHeight) {
-        velocity.x = -velocity.x;
-      }
+    float nextX = position.x + velocity.x * seconds;
+    float nextY = position.y + velocity.y * seconds;
+
+    if (
+      nextX < 0 ||
+      nextX >= width ||
+      nextX >= rectX &&
+      nextX <= rectX + rectWidth &&
+      position.y >= rectY &&
+      position.y <= rectY + rectHeight
+      ) {
+      velocity.x = -velocity.x;
+
+      strength -= absorption;
     }
 
-    lastPosition = new PVector(position.x, position.y);
+    if (
+      nextY < 0 ||
+      nextY >= height ||
+      position.x >= rectX &&
+      position.x <= rectX + rectWidth &&
+      nextY >= rectY &&
+      nextY <= rectY + rectHeight
+      ) {
+      velocity.y = -velocity.y;
+
+      strength -= absorption;
+    }
+
     position.x += velocity.x * seconds;
     position.y += velocity.y * seconds;
   }
 
   public void draw() {
-    fill(255, 0, 0);
-    circle(position.x, position.y, 2);
+    if (strength > 0) {
+      noStroke();
+      fill(strength);
+      circle(position.x, position.y, 3);
+    }
   }
 }
 
-// Configuration
 
-float speed = 150;
-
-int nbPoints = 1000;
-
-int fps = 100;
-
-
-int rectX = 150, rectY = 120, rectWidth = 400, rectHeight = 180;
 
 int startX = -1, startY = -1;
 
@@ -54,10 +77,7 @@ void setup() {
 }
 
 void draw() {
-  background(200);
-
-  fill(255);
-  rect(rectX, rectY, rectWidth, rectHeight);
+  background(0);
 
   for (Point point : points) {
     if (point == null) continue;
@@ -65,22 +85,6 @@ void draw() {
     point.step(1.0/fps);
     point.draw();
   }
-
-
-
-  /*
-  if (dist(position.x, position.y, startX, startY) <= .01) {
-   position = new PVector();
-   velocity = new PVector();
-   
-   int timeDiff = millis() - startTime;
-   println("Delai de " + timeDiff + "ms");
-   println("Distance de " + timeDiff/1000.0 * speed / 2 + " pixels");
-   }
-   */
-
-  fill(0, 0, 255);
-  circle(startX, startY, 5);
 }
 
 // Quand on clique, on enregistre la position de la souris dans les variables startx et starty
