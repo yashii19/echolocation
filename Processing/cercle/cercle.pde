@@ -1,5 +1,8 @@
+
+
 class Point {
   private PVector position;
+  private PVector lastPosition;
   private PVector velocity;
 
   public Point(int positionX, int positionY, float velocityX, float velocityY) {
@@ -8,14 +11,16 @@ class Point {
   }
 
   public void step(float seconds) {
-    if (position.x > rectX && position.x < rectX + rectWidth) {
-      velocity.x = -velocity.x;
-    }
-    
-    if (position.y > rectY && position.y < rectY + rectHeight) {
-      velocity.y = -velocity.y;
+    if (position.x >= rectX && position.x <= rectX + rectWidth && position.y >= rectY && position.y <= rectY + rectHeight) {
+      if (lastPosition.x >= rectX && lastPosition.x <= rectX + rectWidth) {
+        velocity.y = -velocity.y;
+      }
+      if (lastPosition.y >= rectY && lastPosition.y <= rectY + rectHeight) {
+        velocity.x = -velocity.x;
+      }
     }
 
+    lastPosition = new PVector(position.x, position.y);
     position.x += velocity.x * seconds;
     position.y += velocity.y * seconds;
   }
@@ -30,7 +35,9 @@ class Point {
 
 float speed = 150;
 
-int nbPoints = 100;
+int nbPoints = 1000;
+
+int fps = 100;
 
 
 int rectX = 150, rectY = 120, rectWidth = 400, rectHeight = 180;
@@ -43,6 +50,7 @@ Point[] points = new Point[nbPoints];
 
 void setup() {
   size(800, 600);
+  frameRate(fps);
 }
 
 void draw() {
@@ -54,7 +62,7 @@ void draw() {
   for (Point point : points) {
     if (point == null) continue;
 
-    point.step(1.0/frameRate);
+    point.step(1.0/fps);
     point.draw();
   }
 
@@ -78,7 +86,7 @@ void draw() {
 // Quand on clique, on enregistre la position de la souris dans les variables startx et starty
 void mousePressed() {  
   for (int i = 0; i < nbPoints; i++) {
-    points[i] = new Point(mouseX, mouseY, speed * cos(float(i)/nbPoints*PI/2), speed * sin(float(i)/nbPoints*PI/2));
+    points[i] = new Point(mouseX, mouseY, speed * cos(float(i)/nbPoints*PI*2), speed * sin(float(i)/nbPoints*PI*2));
   }
 
   startX = mouseX;
