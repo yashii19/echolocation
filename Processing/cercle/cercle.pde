@@ -1,79 +1,52 @@
 // Configuration
 
+int window_width = 800;
+
+int window_height = 600;
+
 float speed = 200;
 
 int nbPoints = 1000;
 
 int absorption = 40;
 
-int fps = 100;
+int steps_per_second = 200;
 
-int rectX = 150, rectY = 120, rectWidth = 400, rectHeight = 180;
+boolean draw_hits = false;
 
-class Point {
-  private int strength = 255;
-  private PVector position;
-  private PVector velocity;
 
-  public Point(int positionX, int positionY, float velocityX, float velocityY) {
-    position = new PVector(positionX, positionY);
-    velocity = new PVector(velocityX, velocityY);
-  }
+// Variables globales
 
-  public void step(float seconds) {
-    float nextX = position.x + velocity.x * seconds;
-    float nextY = position.y + velocity.y * seconds;
+Point[] points;
 
-    if (
-      nextX < 0 ||
-      nextX >= width ||
-      nextX >= rectX &&
-      nextX <= rectX + rectWidth &&
-      position.y >= rectY &&
-      position.y <= rectY + rectHeight
-      ) {
-      velocity.x = -velocity.x;
+int rectX, rectY, rectWidth, rectHeight;
 
-      strength -= absorption;
-    }
+IntList edgePointsX;
+IntList edgePointsY;
 
-    if (
-      nextY < 0 ||
-      nextY >= height ||
-      position.x >= rectX &&
-      position.x <= rectX + rectWidth &&
-      nextY >= rectY &&
-      nextY <= rectY + rectHeight
-      ) {
-      velocity.y = -velocity.y;
+void reset() {
+  points = new Point[nbPoints];
 
-      strength -= absorption;
-    }
+  rectWidth = (int) random(100, window_width/2);
+  rectHeight = (int) random(100, window_height/2);
+  rectX = (int) random(50, window_width - 50) - rectWidth/2;
+  rectY = (int) random(50, window_height - 50) - rectHeight/2;
 
-    position.x += velocity.x * seconds;
-    position.y += velocity.y * seconds;
-  }
+  edgePointsX = new IntList();
+  edgePointsY = new IntList();
 
-  public void draw() {
-    if (strength > 0) {
-      noStroke();
-      fill(strength);
-      circle(position.x, position.y, 3);
-    }
-  }
+  println(rectX);
+  println(rectY);
+  println(rectWidth);
+  println(rectHeight);
 }
-
-
-
-int startX = -1, startY = -1;
-
-int startTime;
-
-Point[] points = new Point[nbPoints];
 
 void setup() {
   size(800, 600);
-  frameRate(fps);
+  background(0);
+  frameRate(steps_per_second);
+
+  reset();
 }
 
 void draw() {
@@ -82,8 +55,15 @@ void draw() {
   for (Point point : points) {
     if (point == null) continue;
 
-    point.step(1.0/fps);
+    point.step(1.0/steps_per_second);
     point.draw();
+  }
+
+  if (draw_hits) {
+    for (int i = 0; i < edgePointsX.size(); i++) {
+      fill(255, 0, 0);
+      circle(edgePointsX.get(i), edgePointsY.get(i), 2.0);
+    }
   }
 }
 
@@ -92,8 +72,10 @@ void mousePressed() {
   for (int i = 0; i < nbPoints; i++) {
     points[i] = new Point(mouseX, mouseY, speed * cos(float(i)/nbPoints*PI*2), speed * sin(float(i)/nbPoints*PI*2));
   }
+}
 
-  startX = mouseX;
-  startY = mouseY;
-  startTime = millis();
+void keyPressed(){
+ if (key == 'r'){
+   reset();
+ }
 }
