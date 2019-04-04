@@ -89,7 +89,6 @@ void draw() {
 
 // Quand on clique, on enregistre la position de la souris dans les variables startx et starty
 void mousePressed() {  
-  for (int i = 0; i < nbPoints; i++) {
     points[i] = new Point(mouseX, mouseY, speed * cos(float(i)/nbPoints*PI*2), speed * sin(float(i)/nbPoints*PI*2));
   }
 
