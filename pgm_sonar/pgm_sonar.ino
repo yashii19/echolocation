@@ -1,11 +1,3 @@
-/* 
- * sensoShield n1
- * SensorShieldlib Lionel Radisson - @Makio135
- * https://github.com/MAKIO135/sensorShieldLib
- */
-
-///// LIBRARY /////
-
 #include <sensorShieldLib.h>
 SensorShield board;
 
@@ -26,6 +18,21 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 }
 
+int cmValue() {
+  pinMode(sonarPin, INPUT);
+  float pulse = pulseIn(sonarPin, HIGH);
+  float inches = pulse / 147; // 147 uS per inch
+  float cm = inches * 2.54; // 2,54 cm per inch
+
+  return (int) cm;
+}
+
+int cmToLum(int cm){
+  // on limite la distance aux bornes definies plus haut avec constrain()
+  int constrainedCm = constrain(cm, minDist, maxDist);
+  // on associe la distance a la luminosite avec map()
+  return map(constrainedCm, minDist, maxDist, 255, 0);
+}
 
 void loop() {
   // read the value, if there are changes update it and send it through serial
@@ -36,11 +43,4 @@ void loop() {
   // luminosite de la led qui correspond
   int lum = cmToLum(dist);
   analogWrite(ledPin, lum);
-}
-
-int cmToLum(int cm){
-  // on limite la distance aux bornes definies plus haut avec constrain()
-  int constrainedCm = constrain(cm, minDist, maxDist);
-  // on associe la distance a la luminosite avec map()
-  return map(constrainedCm, minDist, maxDist, 255, 0);
 }
