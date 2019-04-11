@@ -3,7 +3,7 @@
 
 #define potMin 0
 #define potMax 1023
-#define freqMin 50
+#define freqMin 20
 #define freqMax 2000
 
 void setup() {
