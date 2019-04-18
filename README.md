@@ -35,7 +35,7 @@ Nous sommes d'abord parti sur une première idée de boîtier pour cacher l'Ardu
 
 
 Nous avons visualisé le phénomène de l’écholocation (aspect visuel). Nous avons crée un “jeu” où une balle rebondit sur un rectangle invisible et avec le rebondi, on doit retrouver où le rectangle se situe.
-(Programme Cercle et Point dans le dossier Programmes)
+(Programme [Cercle](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/Cercle) et [Point](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/Point) dans le dossier Programmes)
 
 
 
@@ -45,6 +45,8 @@ Nous avons visualisé le phénomène de l’écholocation (aspect visuel). Nous 
 
 
 Cette fois, c'est Arduino que nous avons découvert à l'aide d'une série d'exercice proposé par les encadreurs [lien](https://github.com/chevalvert/workshop-upmc-II/tree/master/2-Arduino)
+
+
 
 
 Différent test des capteurs:
@@ -79,7 +81,7 @@ Rappel sur la manipulation de l'Arduino et sa liaison à Processing.
 
 
 
-On a enfin le sonar donc on peut commencer à écrire notre propre code. Le Sonar avec lequel on travaille est le capteur Sonar (modele Ultrasonic Range Finder - LV-MaxSonar-EZ1 SEN-00639 RoHS) qu'on associera avec un buzzer pour l'instant (Programme [SonarPitch](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarPitch), [SonarLed](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarLed), [SonarBips]((https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarBips) dans le dossier Programme).
+On a enfin le sonar donc on peut commencer à écrire notre propre code. Le Sonar avec lequel on travaille est le capteur Sonar (modele Ultrasonic Range Finder - LV-MaxSonar-EZ1 SEN-00639 RoHS) qu'on associera avec un buzzer pour l'instant (Programme [SonarPitch](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarPitch), [SonarLed](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarLed), [SonarBips](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarBips) dans le dossier Programme).
 
 ## Le 11 Avril 2019:
 
