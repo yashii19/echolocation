@@ -12,7 +12,7 @@ int absorption = 40;
 
 int steps_per_second = 200;
 
-boolean draw_hits = false;
+boolean draw_hits = true;
 
 
 // Variables globales
@@ -68,7 +68,8 @@ void draw() {
 }
 
 // Quand on clique, on enregistre la position de la souris dans les variables startx et starty
-void mousePressed() {  
+void mousePressed() {
+  for (int i = 0; i < points.length; i++){
     points[i] = new Point(mouseX, mouseY, speed * cos(float(i)/nbPoints*PI*2), speed * sin(float(i)/nbPoints*PI*2));
   }
 }
