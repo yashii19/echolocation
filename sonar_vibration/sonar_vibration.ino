@@ -1,8 +1,7 @@
 #define sonarPin 10
-#define buzzPin 8
 #define vibrPin 6
 
-#define distMin 10
+#define distMin 15
 #define distMax 200
 #define delayMin 0
 #define delayMax 2000
@@ -12,7 +11,7 @@ int lastTime = 0;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(buzzPin, OUTPUT);
+  pinMode(vibrPin, OUTPUT);
 }
 
 // Distance du sonar en cm
@@ -27,16 +26,13 @@ int sonarCm() {
 
 void loop() {
   int cm = sonarCm();
-  Serial.print("cm: ");
+  Serial.print("distance: ");
   Serial.print(cm);
+  Serial.print("\n");
 
   int constrainedCm = constrain(cm, distMin, distMax);
   
   int del = map(constrainedCm, distMin, distMax, delayMin, delayMax);
-  
-  Serial.print(" delay: ");
-  Serial.print(del);
-  Serial.print("\n");
 
   int currentTime = millis();
   currentDelay += currentTime - lastTime;
@@ -45,7 +41,6 @@ void loop() {
   analogWrite(vibrPin, 0);
   if (currentDelay >= del){
     analogWrite(vibrPin, 153);
-    tone(buzzPin, 440, 50);
     currentDelay = 0;
   }
 }
