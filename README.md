@@ -6,6 +6,8 @@ Alexandre Janin
 
 Ce projet vise a recréer l’écholocation utilisée par les chauve-souris (ainsi que certains cétacés) pour se repérer dans leur environnement.
 
+[Page du wiki fablab](http://fablab.sorbonne-universites.fr/wiki/doku.php?id=wiki:projets:echolocation)
+
 ## Le 7 Mars 2019:
 
 **Présentation du projet : concept, idée et conception primaire de la prothèse.**
