@@ -16,11 +16,11 @@ Nous avons aussi pris en main Processing, grâce à des programmes basiques qui 
 
 ##Le 14 Mars 2019:
 
-Conception d'une prmeière prothèse : dessin et test en carton
+Conception d'une première prothèse : dessin et test en carton
 
-![DessinConception1.png](https://github.com/alexandrejanin/echolocation/DessinConception1.png)
+![Dessin](https://github.com/alexandrejanin/echolocation/blob/master/DessinConception1.jpg)
 
-![DessinConception1.png](https://github.com/alexandrejanin/echolocation/DessinConception2.png)
+![Test de maquette en carton](https://github.com/alexandrejanin/echolocation/blob/master/DessinConception2.jpg)
 
 Nous sommes d'abord parti sur une première idée de boîtier pour cacher l'Arduino. On doit trouver un moyen d'avoir quelque chose de petit, transportable, qui tiendrait sur la main ou le bras.
 
