@@ -1,102 +1,100 @@
-﻿# Projet Echolocation : l'Oeil
+﻿# Echolocation Project: the Eye
 
 Lyna Saoucha
 Hela Menzli
 Alexandre Janin
 
-Ce projet vise a recréer l’écholocation utilisée par les chauve-souris (ainsi que certains cétacés) pour se repérer dans leur environnement. Une demi sphère qu'on peut attraper, mesure la distance à laquelle on est à un obstacle et fait vibrer la main en fonction de la distance : plus on se rapproche, plus les vibrations sont importantes.
+This project aims to recreate the echolocation used by bats (as well as some cetaceans) to find their way in their environment. A half sphere that can be grabbed measures the distance to an obstacle and makes the hand vibrate according to the distance: the closer you get, the more important the vibrations are.
 
-[Page du wiki fablab](http://fablab.sorbonne-universites.fr/wiki/doku.php?id=wiki:projets:echolocation)
+[fablab wiki page](http://fablab.sorbonne-universites.fr/wiki/doku.php?id=wiki:projets:echolocation)
 
-## Maquette finale et test
-
-
-## Suivi du projet
-
-### Présentation du projet : concept, idée et conception primaire de la prothèse.
+## Final model and test
 
 
-Lors de cette séance, nous avons présenté une première idée de notre projet. Nous voulons travailler sur un dispositif qui permettrait de recréer la vision de nuit des chauve souris. Ces dernières ont une vision qui fonctionnent grâce à l'écholocation : une onde est émise par l'animal et lui revient lorsqu'elle rencontre un obstacle. Grace au temps pris par l'onde, la chauve souris peut savoir à quelle distance se trouvent les différents obstacles.
-La présentation avait pour support le powerpoint présent dans le dossier ainsi que l'affiche.
+## Project follow-up
+
+### Presentation of the project: concept, idea and primary design of the prosthesis.
 
 
-### Initiation à Processing, un environnement de développement libre specialisé dans l'interface graphique.
+In this session, we presented an initial idea for our project. We want to work on a device that would recreate the night vision of bats. Bats have a vision that works thanks to echolocation: a wave is emitted by the animal and comes back when it meets an obstacle. Thanks to the time taken by the wave, the bat can know at what distance the different obstacles are.
+The presentation was supported by the powerpoint in the file and the poster.
 
 
-Nous avons aussi pris en main Processing, grâce à des programmes basiques qui nous ont permis d'apprendre les fonctions setup et draw et de comprendre les différents objets de l'environnement (construire un point, choisir des couleurs, jouer avec la souris...).
-
-### Conception d'une première prothèse : dessin et test en carton
-
-![Dessin](https://github.com/alexandrejanin/echolocation/blob/master/DessinConception1.jpg)
-
-![Test de maquette en carton](https://github.com/alexandrejanin/echolocation/blob/master/DessinConception2.jpg)
-
-Nous sommes d'abord parti sur une première idée de boîtier pour cacher l'Arduino. On doit trouver un moyen d'avoir quelque chose de petit, transportable, qui tiendrait sur la main ou le bras.
+### Initiation to Processing, a free development environment specialized in the graphic interface.
 
 
-### Ecriture du notre premier code sur Processing
+We also took Processing in hand, thanks to some basic programs that allowed us to learn the setup and draw functions and to understand the different objects of the environment (building a point, choosing colors, playing with the mouse...).
+
+### Design of a first prosthesis : drawing and cardboard test
+
+![Drawing](https://github.com/alexandrejanin/echolocation/blob/master/DessinConception1.jpg)
+
+![Cardboard model test](https://github.com/alexandrejanin/echolocation/blob/master/DessinConception2.jpg)
+
+We first started with a first idea of a box to hide the Arduino. We have to find a way to have something small, transportable, that would fit on the hand or the arm.
 
 
-Nous avons visualisé le phénomène de l’écholocation (aspect visuel). Nous avons crée un “jeu” où une balle rebondit sur un rectangle invisible et avec le rebondi, on doit retrouver où le rectangle se situe.
-(Programme [Cercle](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/Cercle) et [Point](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/Point) dans le dossier Programmes)
+### Writing our first code on Processing
 
 
-
-
-### Initiation à Arduino:
-
-
-Cette fois, c'est Arduino que nous avons découvert à l'aide d'une série d'exercice proposé par les encadreurs [lien](https://github.com/chevalvert/workshop-upmc-II/tree/master/2-Arduino)
+We visualized the phenomenon of echolocation (visual aspect). We created a "game" where a ball bounces on an invisible rectangle and with the bounce, we must find where the rectangle is located.
+(Program [Circle](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/Cercle) and [Point](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/Point) in the Programs folder)
 
 
 
 
-Différent test des capteurs:
+### Introduction to Arduino:
 
 
-Photoresistor → Lumière → capteurLDR
-
-
-Force Sensitive Resistor → Force (pression) → capteurFSR
-
-
-Flex sensor → Flexion → capteurFLEX
-
-
-Pulse sensor → Pouls → capteurPOULS
-
-
-Ultrasonic Range Finder → Distance → capteurSONAR
-
-
-Humidity sensor → Humidité → humidity et temperature
-
-
-Après avoir changé le code fourni (un programme qui permet d'utiliser tout les capteurs), nous avons commencé à travailler sur ce qui intéressait notre sujet. On s'est rendu compte qu'on avait besoin d'un sonar pour emettre et envoyer des ondes et la réfléxion portait sur la manière de prévenir l'utilsateur. Est-ce -qu'on utilise de la lumière ? du son ? Autre chose ? Pour s'entraîner, on a crée un premier programme qui contrôle la fréquence du son à l'aide d'un potentiomètre. (Programme [BuzzerPotentiometre](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/BuzzerPotentiometre) dans le dossier Programmes)
+This time, it is Arduino that we discovered with the help of a series of exercises proposed by the framers [link](https://github.com/chevalvert/workshop-upmc-II/tree/master/2-Arduino)
 
 
 
 
-
-Rappel sur la manipulation de l'Arduino et sa liaison à Processing.
-
+Different sensor test:
 
 
+Photoresistor → Light → LDR sensor
 
-On a enfin le sonar donc on peut commencer à écrire notre propre code. Le Sonar avec lequel on travaille est le capteur Sonar (modele Ultrasonic Range Finder - LV-MaxSonar-EZ1 SEN-00639 RoHS) qu'on associera avec un buzzer pour l'instant (Programme [SonarPitch](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarPitch), [SonarLed](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarLed), [SonarBips](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarBips) dans le dossier Programme).
+
+Force Sensitive Resistor → Force (pressure) → sensorFSR
 
 
-### Conception de la forme de la prothese :
+Flex sensor → Flexion → sensorFLEX
+
+
+Pulse sensor → Pulse → sensorPOULS
+
+
+Ultrasonic Range Finder → Distance → SensorSONAR
+
+
+Humidity sensor → Humidity → humidity and temperature
+
+
+After changing the provided code (a program that allows you to use all the sensors), we started working on what interested our subject. We realized that we needed a sonar to transmit and send waves and the reflection was about how to warn the user. Do we use light? Sound? Anything else? To practice, we created a first program that controls the frequency of the sound with a potentiometer (Program [BuzzerPotentiometer](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/BuzzerPotentiometre) in the Programs folder)
+
+
+
+
+
+Reminder on the handling of the Arduino and its link to Processing.
+
+
+
+
+We finally have the sonar so we can start writing our own code. The Sonar with which we work is the Sonar sensor (Ultrasonic Range Finder model - LV-MaxSonar-EZ1 SEN-00639 RoHS) that we will associate with a buzzer for the moment (Program [SonarPitch](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarPitch), [SonarLed](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarLed), [SonarBips](https://github.com/alexandrejanin/echolocation/tree/master/Programmes/SonarBips) in the Program folder)
+
+
+### Design of the prosthesis shape :
 
 ![montage_sonar_vibreur](https://user-images.githubusercontent.com/46900484/200603614-8881526b-4efd-4090-b095-2ed2dbd49e43.png)
 
+We have several ideas: we could start with an arc of circle with an eye shape, that we would hold with the hand in which we would hide the Arduino and the sonar. We also thought of a bracelet that we would wear on the wrist or on the arm, in the shape of a simple box.
+We decided to give the perception of the obstacle thanks to a vibrator: the closer the obstacle is, the faster the frequency of the vibration. (Program [SonarVibration](http://wwww.github.com/alexandrejanin/echolocation/Programmes/SonarVibration) in the Programs folder)
 
-On a plusieurs idées : on pourrait partir sur un arc de cercle avec une forme d'oeil, qu'on tiendrait avec la main dans lequel on cacherait l'Arduino et le sonar. On a aussi pensé à un bracelet qu'on porterait au poignet ou sur le bras, en forme de boîte simple.
-On a decidé de donner la perception de l'obstacle grâce à un vibreur : plus l'obstacle est proche, plus la fréquence de la vibration est rapide. (Programme [SonarVibration](http://wwww.github.com/alexandrejanin/echolocation/Programmes/SonarVibration) dans le dossier Programmes)
-
-### Passage au fablab et travail sur la finition de la maquette aprés avoir choisi les points d'inspiration de départ :
+### Move to the fablab and work on the finishing of the model after having chosen the starting points of inspiration:
 
 ![moodboard](https://user-images.githubusercontent.com/46900484/200603784-8e541ee6-384e-4a77-8e92-ccc41972907a.png)
 
 ![whatsapp_image_2019-05-08_at_23 37 32](https://user-images.githubusercontent.com/46900484/200604086-038b4b0d-20fc-4a5a-b60a-2f74b65286ca.jpeg)
-
